@@ -103,6 +103,8 @@ const ColorTape = styled.div.attrs((props) => ({
 `;
 
 export default function Card({ colors }) {
+  const { color1, color2 } = colors;
+
   const notify = (colors, cb) => {
     toast.dismiss();
     toast("Copied !", {
@@ -130,28 +132,28 @@ export default function Card({ colors }) {
       exit="blink"
     >
       <Gradient
-        colors1={colors.color1}
-        colors2={colors.color2}
+        colors1={color1}
+        colors2={color2}
         onClick={() => notify(colors, gradientToClipboard)}
         whileTap={{ scale: 1.05 }}
       />
       <Details>
         <ColorBox>
           <ColorDrop
-            color={colors.color1}
-            onClick={() => notify(colors.color1, colorToClipboard)}
+            color={color1}
+            onClick={() => notify(color1, colorToClipboard)}
             whileTap={{ scale: 1.25 }}
           />
-          <ColorTape colors1={colors.color1} colors2={colors.color2} />
+          <ColorTape colors1={color1} colors2={color2} />
           <ColorDrop
-            color={colors.color2}
-            onClick={() => notify(colors.color2, colorToClipboard)}
+            color={color2}
+            onClick={() => notify(color2, colorToClipboard)}
             whileTap={{ scale: 1.25 }}
           />
         </ColorBox>
         <TextBox>
-          <span>#{colors.color1}</span>
-          <span>#{colors.color2}</span>
+          <span>#{color1}</span>
+          <span>#{color2}</span>
         </TextBox>
       </Details>
     </Container>
